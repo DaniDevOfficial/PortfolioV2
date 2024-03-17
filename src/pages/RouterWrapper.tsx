@@ -7,7 +7,8 @@ import { ParallaxLanding } from "./ParallaxLanding";
 import { StarryBackground } from "./StaryBackground";
 import { SplineComp } from "./SplineComp";
 import { Projects } from "./Projects";
-import { Startup } from "./Startup";
+import { StartUp } from "./Startup";
+import { StartUpDesktop } from "./StartUpDesktop";
 
 
 export function RouterWrapper() {
@@ -18,7 +19,7 @@ export function RouterWrapper() {
 
 
                 <Routes>
-                    <Route path="/" element={<Startup />} />
+                    <Route path="/" element={<StartUp />} />
                     <Route path="/home" element={<ParallaxLanding />} />
                     <Route path="/star" element={<StarryBackground />} />
                     <Route path="/3d" element={<SplineComp />} />
