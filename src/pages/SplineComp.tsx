@@ -6,7 +6,11 @@ import LoadingGif from '../assets/loading.gif';
 import LoadingGifv2 from '../assets/LoadingGifRealLife.gif';
 export function SplineComp() {
     const [loading, setLoading] = useState(true)
+    const [isVisible, setIsVisible] = useState(false);
 
+    useEffect(() => {
+        setIsVisible(true);
+    }, []);
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -38,37 +42,48 @@ export function SplineComp() {
 
             {loading && (
                 <>
-                    <img
-                        src={LoadingGifv2}
-                        alt="loading gif"
+                    <div
+                        className={isVisible ? 'fadeIn' : ''}
                         style={{
-                            position: "absolute",
-                            top: "50%",
-                            left: "50%",
-                            transform: "translate(-50%, -50%)",
-                            width: "50%",
-                            height: "50%",
-                            minWidth: "300px",
+                            opacity: isVisible ? 1 : 0,
+                            transition: 'opacity 1s ease-in-out',
                         }}
-                    />
-                    <Text
-                        position="absolute"
-                        top="50%"
-                        left="50%"
-                        transform="translate(-50%, -50%)"
-                        color="white"
-                        width={"50%"}
-                        bg="rgba(0, 0, 0, 0.6)"
-                        padding={"0.1rem"}
-                        boxShadow="md"
-                        textAlign={"center"}
                     >
-                        hollup... Let him cook
-                    </Text>
+
+                        <img
+                            src={LoadingGifv2}
+                            alt="loading gif"
+                            style={{
+                                position: "absolute",
+                                top: "50%",
+                                left: "50%",
+                                transform: "translate(-50%, -50%)",
+                                width: "50%",
+                                height: "50%",
+                                minWidth: "300px",
+                            }}
+                        />
+                        <Text
+                            position="absolute"
+                            top="50%"
+                            left="50%"
+                            transform="translate(-50%, -50%)"
+                            color="white"
+                            width={"50%"}
+                            bg="rgba(0, 0, 0, 0.6)"
+                            padding={"0.1rem"}
+                            boxShadow="md"
+                            textAlign={"center"}
+                        >
+                            hollup... Let him cook
+                        </Text>
+                    </div>
                 </>
-            )}
+
+            )
+            }
             <Spline scene="https://prod.spline.design/Q5SXVE-0rHNlhupG/scene.splinecode" />
 
-        </Container>
+        </Container >
     );
 }
